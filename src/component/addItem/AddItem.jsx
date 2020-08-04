@@ -8,6 +8,7 @@ class AddItem extends React.Component {
     handleAdd = () => {
         let inputValue = document.getElementById('input').value;
         if (inputValue !== '') {
+            axios.post('https://5e9ec500fb467500166c4658.mockapi.io/todos', { content:inputValue,status: false });
             this.props.addItem(inputValue);
         } else {
             alert("input message should not be blank!");
