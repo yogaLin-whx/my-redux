@@ -27,10 +27,13 @@ class TodoItem extends React.Component {
 }
 
 
+const mapStateToProps = state => {
+    return { itemList: state.itemList.filter(item => item.status === true) };
+}
 
 const mapDispatchToProps = dispatch => ({
     deleteItem: (index) => dispatch({type:"delete",index:index}),
     doneItem: (index) => dispatch({type:'done',index:index})
 })
 
-export default connect(null,mapDispatchToProps)(TodoItem);
+export default connect(mapStateToProps,mapDispatchToProps)(TodoItem);
