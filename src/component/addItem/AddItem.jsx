@@ -3,12 +3,12 @@ import { connect } from "react-redux";
 import TodoItemList from '../../TodoItemList/TodoItemList';
 
 class AddItem extends React.Component {
-    
+
     handleAdd = () => {
         let inputValue = document.getElementById('input').value;
-        if(inputValue!==''){
+        if (inputValue !== '') {
             this.props.addItem(inputValue);
-        }else{
+        } else {
             alert("input message should not be blank!");
         }
     }
@@ -18,7 +18,7 @@ class AddItem extends React.Component {
 
         return (<div>
             <div>
-                <input  id='input'  /> <button onClick={this.handleAdd}>Add</button>
+                <input id='input' /> <button onClick={this.handleAdd}>Add</button>
             </div>
             <TodoItemList></TodoItemList>
         </div>
@@ -27,12 +27,12 @@ class AddItem extends React.Component {
 
 }
 
-const mapStateToProps =  state => {
-    return {value:state.value,itemValue:state.itemValue};
+const mapStateToProps = state => {
+    return { value: state.value, itemValue: state.itemValue };
 }
 
 const mapDispatchToProps = dispatch => ({
-    addItem: (inputValue) => dispatch({type:"add",value:inputValue})
+    addItem: (inputValue) => dispatch({ type: "add", value: inputValue })
 })
 
-export default connect(mapStateToProps,mapDispatchToProps)(AddItem);
+export default connect(mapStateToProps, mapDispatchToProps)(AddItem);

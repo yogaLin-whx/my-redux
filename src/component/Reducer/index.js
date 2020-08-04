@@ -12,12 +12,14 @@ function reducer(state = initialize, action) {
         case 'delete':
             return { itemList: state.itemList.filter((item, index) => index !== action.index) }
         case 'done':
-            return {itemList:state.itemList.map((item, index) =>{
-                if(index === action.index){
-                    item.done = !item.done;
-                }
-                return item;
-            } )}
+            return {
+                itemList: state.itemList.map((item, index) => {
+                    if (index === action.index) {
+                        item.done = !item.done;
+                    }
+                    return item;
+                })
+            }
         default:
             return state
     }

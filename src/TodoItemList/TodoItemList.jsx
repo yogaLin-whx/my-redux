@@ -5,11 +5,11 @@ import TodoItem from '../component/Item/TodoItem';
 class TodoItemList extends React.Component {
     render() {
         var index = 0;
-        
+
         return (
             <div>
                 {
-                    this.props.itemList.map(key => <TodoItem key={index} index={index++}/>)
+                    this.props.itemList.map(key => <TodoItem key={index} index={index++} />)
                 }
             </div>
         )
