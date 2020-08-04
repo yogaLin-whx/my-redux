@@ -1,6 +1,7 @@
 import React from 'react';
 import { connect } from "react-redux";
 import TodoItemList from '../../TodoItemList/TodoItemList';
+import axios from 'axios';
 
 class AddItem extends React.Component {
 
@@ -24,15 +25,24 @@ class AddItem extends React.Component {
         </div>
         )
     }
-
+     componentDidMount(){
+        const _this = this;
+        axios.get('https://5e9ec500fb467500166c4658.mockapi.io/todos')
+        .then(function (response) {
+            _this.props.addItemList(response.data);
+        })
+    }
 }
+
+
 
 const mapStateToProps = state => {
     return { value: state.value, itemValue: state.itemValue };
 }
 
 const mapDispatchToProps = dispatch => ({
-    addItem: (inputValue) => dispatch({ type: "add", content: inputValue })
+    addItem: (inputValue) => dispatch({ type: "add", content: inputValue }),
+    addItemList: (data) => dispatch({type:'data', data:data})
 })
 
 export default connect(mapStateToProps, mapDispatchToProps)(AddItem);

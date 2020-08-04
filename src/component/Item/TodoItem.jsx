@@ -16,7 +16,8 @@ class TodoItem extends React.Component {
     render() {
         return (
             <div>
-                <span onClick={this.handleDone} style={{ textDecorationLine: this.props.itemList[this.props.index].status ? 'line-through' : 'none' }}>{this.props.itemList[this.props.index].content}</span>
+                <span onClick={this.handleDone} style={{ textDecorationLine: this.props.item.status ? 'line-through' : 'none' }}>
+                    {this.props.item.content}</span>
                  <button onClick={this.handleDelete}>delete</button>
             </div>
         )
@@ -25,13 +26,9 @@ class TodoItem extends React.Component {
 
 
 
-const mapStateToProps =  state => {
-    return {itemList: state.itemList};
-}
-
 const mapDispatchToProps = dispatch => ({
     deleteItem: (index) => dispatch({type:"delete",index:index}),
     doneItem: (index) => dispatch({type:'done',index:index})
 })
 
-export default connect(mapStateToProps,mapDispatchToProps)(TodoItem);
+export default connect(null,mapDispatchToProps)(TodoItem);

@@ -8,14 +8,14 @@ class DoneItem extends React.Component {
 
     render() {
 
-        let index = 0;
-
+        console.log(this.props.itemList);
         return (
 
             <div>
                 {
-                    this.props.itemList.map(key => <TodoItem key={index} index={index++} />)
+                    this.props.itemList.map((item, index) => <TodoItem key={index} item={item} index={index}/>)
                 }
+                
             </div>
         )
     }

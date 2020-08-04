@@ -3,7 +3,6 @@ const initialize = {
 }
 
 function reducer(state = initialize, action) {
-    console.log("acto:" + action.index);
     switch (action.type) {
         case 'add':
             return { itemList: [...state.itemList, { content: action.content, status: false }] }
@@ -15,6 +14,13 @@ function reducer(state = initialize, action) {
                     if (index === action.index) {
                         item.status = !item.status;
                     }
+                   
+                    return item;
+                })
+            }
+        case 'data':
+            return{
+                itemList: action.data.map((item, index) => {
                     return item;
                 })
             }
