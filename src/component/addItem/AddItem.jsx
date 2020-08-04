@@ -1,5 +1,6 @@
 import React from 'react';
 import { connect } from "react-redux";
+import TodoItemList from '../../TodoItemList/TodoItemList';
 
 class AddItem extends React.Component {
     
@@ -19,7 +20,7 @@ class AddItem extends React.Component {
             <div>
                 <input  id='input'  /> <button onClick={this.handleAdd}>Add</button>
             </div>
-            
+            <TodoItemList></TodoItemList>
         </div>
         )
     }
