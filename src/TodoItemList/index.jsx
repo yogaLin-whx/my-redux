@@ -1,10 +1,10 @@
 import React from 'react';
 import { connect } from "react-redux";
-import TodoItem from '../component/Item/TodoItem';
+import TodoItem from '../component/Item';
 
 class TodoItemList extends React.Component {
     render() {
-
+        console.log(this.props.itemList)
         return (
             <div>
                 {

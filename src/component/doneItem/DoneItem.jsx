@@ -1,5 +1,5 @@
 import React from 'react';
-import TodoItem from '../Item/TodoItem'
+import TodoItem from '../Item'
 import { connect } from "react-redux";
 
 

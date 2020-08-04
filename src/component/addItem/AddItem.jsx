@@ -1,6 +1,6 @@
 import React from 'react';
 import { connect } from "react-redux";
-import TodoItemList from '../../TodoItemList/TodoItemList';
+import TodoItemList from '../../TodoItemList';
 import axios from 'axios';
 
 class AddItem extends React.Component {

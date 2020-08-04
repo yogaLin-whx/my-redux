@@ -1,5 +1,6 @@
 import React from 'react';
 import { connect } from "react-redux";
+import Axios from 'axios';
 
 class TodoItem extends React.Component {
 
@@ -10,6 +11,7 @@ class TodoItem extends React.Component {
 
     handleDone =() => {
         let index = this.props.index;
+        Axios.put('https://5e9ec500fb467500166c4658.mockapi.io/todos/'+this.props.item.id, { status: !this.props.item.status });
         this.props.doneItem(index);
     }
 

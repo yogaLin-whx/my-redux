@@ -14,7 +14,6 @@ function reducer(state = initialize, action) {
                     if (index === action.index) {
                         item.status = !item.status;
                     }
-                   
                     return item;
                 })
             }
