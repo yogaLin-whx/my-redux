@@ -14,7 +14,7 @@ function reducer(state = initialize, action) {
         case 'done':
             return {itemList:state.itemList.map((item, index) =>{
                 if(index === action.index){
-                    item.done = true;
+                    item.done = !item.done;
                 }
                 return item;
             } )}
