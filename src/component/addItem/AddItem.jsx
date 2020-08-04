@@ -1,7 +1,8 @@
 import React from 'react';
 import { connect } from "react-redux";
+import TodoItem from '../Item/TodoItem';
 
-class Item extends React.Component {
+class AddItem extends React.Component {
 
 
     handleInputChange = e =>{
@@ -17,7 +18,7 @@ class Item extends React.Component {
                 <input onChange={this.handleInputChange}  /><button onClick={this.props.addItem}>Add</button>
             </div>
             <div>
-                {this.props.itemValue} <button onClick={this.props.addItem}>delete</button>
+               <TodoItem></TodoItem>
             </div>
         </div>
         )
@@ -31,8 +32,7 @@ const mapStateToProps =  state => {
 
 const mapDispatchToProps = dispatch => ({
     addItem: () => dispatch({type:"add"}),
-    deleteItem: () => dispatch({type:"delete"}),
     inputChange:(inputValue) => dispatch({type:"inputChange",value:inputValue})
 })
 
-export default connect(mapStateToProps,mapDispatchToProps)(Item);
+export default connect(mapStateToProps,mapDispatchToProps)(AddItem);
