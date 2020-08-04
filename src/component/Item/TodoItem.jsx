@@ -5,14 +5,19 @@ class TodoItem extends React.Component {
 
     handleDelete = () => {
         let index = this.props.index;
-        console.log("delete"+index);
         this.props.deleteItem(index);
+    }
+
+    handleDone =() => {
+        let index = this.props.index;
+        this.props.doneItem(index);
     }
 
     render() {
         return (
             <div>
-                {this.props.itemList[this.props.index].value} <button onClick={this.handleDelete}>delete</button>
+                <span onClick={this.handleDone} style={{ textDecorationLine: this.props.itemList[this.props.index].done ? 'line-through' : 'none' }}>{this.props.itemList[this.props.index].value}</span>
+                 <button onClick={this.handleDelete}>delete</button>
             </div>
         )
     }
@@ -25,7 +30,8 @@ const mapStateToProps =  state => {
 }
 
 const mapDispatchToProps = dispatch => ({
-    deleteItem: (index) => dispatch({type:"delete",index:index})
+    deleteItem: (index) => dispatch({type:"delete",index:index}),
+    doneItem: (index) => dispatch({type:'done',index:index})
 })
 
 export default connect(mapStateToProps,mapDispatchToProps)(TodoItem);

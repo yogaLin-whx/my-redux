@@ -1,16 +1,23 @@
 const initialize = {
     value: '',
     itemValue: '',
-    itemList:[]
+    itemList: []
 }
 
 function reducer(state = initialize, action) {
-    console.log("acto:"+action.index);
+    console.log("acto:" + action.index);
     switch (action.type) {
         case 'add':
-            return {itemList:[...state.itemList,{value: action.value}]}
+            return { itemList: [...state.itemList, { value: action.value, done: false }] }
         case 'delete':
-            return {itemList:state.itemList.filter((item,index) => index !== action.index)  }
+            return { itemList: state.itemList.filter((item, index) => index !== action.index) }
+        case 'done':
+            return {itemList:state.itemList.map((item, index) =>{
+                if(index === action.index){
+                    item.done = true;
+                }
+                return item;
+            } )}
         default:
             return state
     }
