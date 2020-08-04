@@ -3,10 +3,16 @@ import { connect } from "react-redux";
 
 class TodoItem extends React.Component {
 
+    handleDelete = () => {
+        let index = this.props.index;
+        console.log("delete"+index);
+        this.props.deleteItem(index);
+    }
+
     render() {
         return (
             <div>
-                {this.props.itemValue} <button onClick={this.props.deleteItem}>delete</button>
+                {this.props.itemList[this.props.index].value} <button onClick={this.handleDelete}>delete</button>
             </div>
         )
     }
@@ -15,11 +21,11 @@ class TodoItem extends React.Component {
 
 
 const mapStateToProps =  state => {
-    return {itemValue:state.itemValue};
+    return {itemList: state.itemList};
 }
 
 const mapDispatchToProps = dispatch => ({
-    deleteItem: () => dispatch({type:"delete"})
+    deleteItem: (index) => dispatch({type:"delete",index:index})
 })
 
 export default connect(mapStateToProps,mapDispatchToProps)(TodoItem);

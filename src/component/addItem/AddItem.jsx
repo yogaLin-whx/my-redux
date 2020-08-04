@@ -1,13 +1,15 @@
 import React from 'react';
 import { connect } from "react-redux";
-import TodoItem from '../Item/TodoItem';
 
 class AddItem extends React.Component {
-
-
-    handleInputChange = e =>{
-        var value = e.target.value;
-        this.props.inputChange(value);
+    
+    handleAdd = () => {
+        let inputValue = document.getElementById('input').value;
+        if(inputValue!==''){
+            this.props.addItem(inputValue);
+        }else{
+            alert("input message should not be blank!");
+        }
     }
 
 
@@ -15,11 +17,9 @@ class AddItem extends React.Component {
 
         return (<div>
             <div>
-                <input onChange={this.handleInputChange}  /><button onClick={this.props.addItem}>Add</button>
+                <input  id='input'  /> <button onClick={this.handleAdd}>Add</button>
             </div>
-            <div>
-               <TodoItem></TodoItem>
-            </div>
+            
         </div>
         )
     }
@@ -31,8 +31,7 @@ const mapStateToProps =  state => {
 }
 
 const mapDispatchToProps = dispatch => ({
-    addItem: () => dispatch({type:"add"}),
-    inputChange:(inputValue) => dispatch({type:"inputChange",value:inputValue})
+    addItem: (inputValue) => dispatch({type:"add",value:inputValue})
 })
 
 export default connect(mapStateToProps,mapDispatchToProps)(AddItem);
