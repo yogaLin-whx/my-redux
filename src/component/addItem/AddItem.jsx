@@ -32,7 +32,7 @@ const mapStateToProps = state => {
 }
 
 const mapDispatchToProps = dispatch => ({
-    addItem: (inputValue) => dispatch({ type: "add", value: inputValue })
+    addItem: (inputValue) => dispatch({ type: "add", content: inputValue })
 })
 
 export default connect(mapStateToProps, mapDispatchToProps)(AddItem);

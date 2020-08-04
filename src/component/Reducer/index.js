@@ -6,7 +6,7 @@ function reducer(state = initialize, action) {
     console.log("acto:" + action.index);
     switch (action.type) {
         case 'add':
-            return { itemList: [...state.itemList, { value: action.value, status: false }] }
+            return { itemList: [...state.itemList, { content: action.content, status: false }] }
         case 'delete':
             return { itemList: state.itemList.filter((item, index) => index !== action.index) }
         case 'done':
