@@ -6,6 +6,7 @@ class TodoItem extends React.Component {
 
     handleDelete = () => {
         let index = this.props.index;
+        Axios.delete('https://5e9ec500fb467500166c4658.mockapi.io/todos/'+this.props.item.id);
         this.props.deleteItem(index);
     }
 
