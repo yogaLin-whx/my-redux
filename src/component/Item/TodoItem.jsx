@@ -16,7 +16,7 @@ class TodoItem extends React.Component {
     render() {
         return (
             <div>
-                <span onClick={this.handleDone} style={{ textDecorationLine: this.props.itemList[this.props.index].done ? 'line-through' : 'none' }}>{this.props.itemList[this.props.index].value}</span>
+                <span onClick={this.handleDone} style={{ textDecorationLine: this.props.itemList[this.props.index].status ? 'line-through' : 'none' }}>{this.props.itemList[this.props.index].value}</span>
                  <button onClick={this.handleDelete}>delete</button>
             </div>
         )
