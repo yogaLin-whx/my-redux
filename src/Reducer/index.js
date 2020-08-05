@@ -1,5 +1,6 @@
 const initialize = {
-    itemList: []
+    itemList: [],
+    loading: false
 }
 
 function reducer(state = initialize, action) {

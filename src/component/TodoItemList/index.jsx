@@ -4,9 +4,7 @@ import TodoItem from '../Item';
 import { List } from 'antd';
 class TodoItemList extends React.Component {
     render() {
-        console.log(this.props.itemList)
         return (
-
             <List
                 itemLayout="horizontal"
                 dataSource={this.props.itemList}
@@ -20,7 +18,7 @@ class TodoItemList extends React.Component {
 
 
 const mapStateToProps = state => {
-    return { itemList: state.itemList };
+    return { itemList: state.reducer.itemList};
 }
 
 const mapDispatchToProps = dispatch => ({

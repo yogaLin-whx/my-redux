@@ -43,7 +43,7 @@ class AddItem extends React.Component {
 
 
 const mapStateToProps = state => {
-    return { value: state.value, itemValue: state.itemValue };
+    return { value: state.reducer.value, itemValue: state.reducer.itemValue };
 }
 
 const mapDispatchToProps = dispatch => ({

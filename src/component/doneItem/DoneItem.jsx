@@ -19,7 +19,7 @@ class DoneItem extends React.Component {
 }
 
 const mapStateToProps = state => {
-    return { itemList: state.itemList.filter(item => item.status === true) };
+    return { itemList: state.reducer.itemList.filter(item => item.status === true) };
 }
 
 

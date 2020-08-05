@@ -7,8 +7,10 @@ class TodoItem extends React.Component {
 
     handleDelete = () => {
         let index = this.props.index;
-        todoApi.delete(`/${this.props.item.id}`);
-        this.props.deleteItem(index);
+        todoApi.delete(`/${this.props.item.id}`).then(response=>{
+            this.props.deleteItem(index);
+        });
+        
     }
 
     handleDone = () => {
@@ -41,7 +43,7 @@ class TodoItem extends React.Component {
 
 
 const mapStateToProps = state => {
-    return { itemList: state.itemList.filter(item => item.status === true) };
+    return { itemList: state.reducer.itemList.filter(item => item.status === true) };
 }
 
 const mapDispatchToProps = dispatch => ({
