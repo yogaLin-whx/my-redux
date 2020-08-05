@@ -18,7 +18,7 @@ function reducer(state = initialize, action) {
                 })
             }
         case 'data':
-            return{
+            return {
                 itemList: action.data.map((item, index) => {
                     return item;
                 })

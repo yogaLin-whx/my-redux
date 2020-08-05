@@ -6,13 +6,13 @@ class TodoItem extends React.Component {
 
     handleDelete = () => {
         let index = this.props.index;
-        Axios.delete('https://5e9ec500fb467500166c4658.mockapi.io/todos/'+this.props.item.id);
+        Axios.delete('https://5e9ec500fb467500166c4658.mockapi.io/todos/' + this.props.item.id);
         this.props.deleteItem(index);
     }
 
-    handleDone =() => {
+    handleDone = () => {
         let index = this.props.index;
-        Axios.put('https://5e9ec500fb467500166c4658.mockapi.io/todos/'+this.props.item.id, { status: !this.props.item.status });
+        Axios.put('https://5e9ec500fb467500166c4658.mockapi.io/todos/' + this.props.item.id, { status: !this.props.item.status });
         this.props.doneItem(index);
     }
 
@@ -21,7 +21,7 @@ class TodoItem extends React.Component {
             <div>
                 <span onClick={this.handleDone} style={{ textDecorationLine: this.props.item.status ? 'line-through' : 'none' }}>
                     {this.props.item.content}</span>
-                 <button onClick={this.handleDelete}>delete</button>
+                <button onClick={this.handleDelete}>delete</button>
             </div>
         )
     }
@@ -33,8 +33,8 @@ const mapStateToProps = state => {
 }
 
 const mapDispatchToProps = dispatch => ({
-    deleteItem: (index) => dispatch({type:"delete",index:index}),
-    doneItem: (index) => dispatch({type:'done',index:index})
+    deleteItem: (index) => dispatch({ type: "delete", index: index }),
+    doneItem: (index) => dispatch({ type: 'done', index: index })
 })
 
-export default connect(mapStateToProps,mapDispatchToProps)(TodoItem);
+export default connect(mapStateToProps, mapDispatchToProps)(TodoItem);

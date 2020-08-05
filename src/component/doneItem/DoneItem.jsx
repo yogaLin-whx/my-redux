@@ -5,17 +5,14 @@ import { connect } from "react-redux";
 
 class DoneItem extends React.Component {
 
-
     render() {
 
-        console.log(this.props.itemList);
         return (
 
             <div>
                 {
-                    this.props.itemList.map((item, index) => <TodoItem key={index} item={item} index={index}/>)
+                    this.props.itemList.map((item, index) => <TodoItem key={index} item={item} index={index} />)
                 }
-                
             </div>
         )
     }

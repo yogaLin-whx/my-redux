@@ -20,9 +20,9 @@ class Menu extends React.Component {
                         </li>
                     </ul>
                     <Route path="/done" component={DoneItem}>
-          </Route>
-          <Route path="/item" component={AddItem}>
-          </Route>
+                    </Route>
+                    <Route path="/item" component={AddItem}>
+                    </Route>
                 </div>
             </Router>
 

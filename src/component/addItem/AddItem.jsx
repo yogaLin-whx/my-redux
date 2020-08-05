@@ -8,13 +8,12 @@ class AddItem extends React.Component {
     handleAdd = () => {
         let inputValue = document.getElementById('input').value;
         if (inputValue !== '') {
-            axios.post('https://5e9ec500fb467500166c4658.mockapi.io/todos', { content:inputValue,status: false });
+            axios.post('https://5e9ec500fb467500166c4658.mockapi.io/todos', { content: inputValue, status: false });
             this.props.addItem(inputValue);
         } else {
             alert("input message should not be blank!");
         }
     }
-
 
     render() {
 
@@ -26,12 +25,12 @@ class AddItem extends React.Component {
         </div>
         )
     }
-     componentDidMount(){
+    componentDidMount() {
         const _this = this;
         axios.get('https://5e9ec500fb467500166c4658.mockapi.io/todos')
-        .then(function (response) {
-            _this.props.addItemList(response.data);
-        })
+            .then(function (response) {
+                _this.props.addItemList(response.data);
+            })
     }
 }
 
@@ -43,7 +42,7 @@ const mapStateToProps = state => {
 
 const mapDispatchToProps = dispatch => ({
     addItem: (inputValue) => dispatch({ type: "add", content: inputValue }),
-    addItemList: (data) => dispatch({type:'data', data:data})
+    addItemList: (data) => dispatch({ type: 'data', data: data })
 })
 
 export default connect(mapStateToProps, mapDispatchToProps)(AddItem);
