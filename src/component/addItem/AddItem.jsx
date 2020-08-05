@@ -1,14 +1,18 @@
 import React from 'react';
 import { connect } from "react-redux";
 import TodoItemList from '../TodoItemList';
-import axios from 'axios';
+import  todoApi from '../../Request'
+
 
 class AddItem extends React.Component {
 
     handleAdd = () => {
         let inputValue = document.getElementById('input').value;
         if (inputValue !== '') {
-            axios.post('https://5e9ec500fb467500166c4658.mockapi.io/todos', { content:inputValue,status: false });
+            todoApi.post('',{
+                content:inputValue,
+                status: false 
+            })
             this.props.addItem(inputValue);
         } else {
             alert("input message should not be blank!");
@@ -28,8 +32,9 @@ class AddItem extends React.Component {
     }
      componentDidMount(){
         const _this = this;
-        axios.get('https://5e9ec500fb467500166c4658.mockapi.io/todos')
+        todoApi.get()
         .then(function (response) {
+            console.log(response);
             _this.props.addItemList(response.data);
         })
     }
