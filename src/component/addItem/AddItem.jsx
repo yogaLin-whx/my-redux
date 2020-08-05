@@ -1,7 +1,7 @@
 import React from 'react';
 import { connect } from "react-redux";
 import TodoItemList from '../TodoItemList';
-import  todoApi from '../../Request'
+import todoApi from '../../Request'
 
 
 class AddItem extends React.Component {
@@ -9,16 +9,15 @@ class AddItem extends React.Component {
     handleAdd = () => {
         let inputValue = document.getElementById('input').value;
         if (inputValue !== '') {
-            todoApi.post('',{
-                content:inputValue,
-                status: false 
+            todoApi.post('', {
+                content: inputValue,
+                status: false
             })
             this.props.addItem(inputValue);
         } else {
             alert("input message should not be blank!");
         }
     }
-
 
     render() {
 
@@ -30,13 +29,13 @@ class AddItem extends React.Component {
         </div>
         )
     }
-     componentDidMount(){
+    componentDidMount() {
         const _this = this;
         todoApi.get()
-        .then(function (response) {
-            console.log(response);
-            _this.props.addItemList(response.data);
-        })
+            .then(function (response) {
+                console.log(response);
+                _this.props.addItemList(response.data);
+            })
     }
 }
 
@@ -48,7 +47,7 @@ const mapStateToProps = state => {
 
 const mapDispatchToProps = dispatch => ({
     addItem: (inputValue) => dispatch({ type: "add", content: inputValue }),
-    addItemList: (data) => dispatch({type:'data', data:data})
+    addItemList: (data) => dispatch({ type: 'data', data: data })
 })
 
 export default connect(mapStateToProps, mapDispatchToProps)(AddItem);

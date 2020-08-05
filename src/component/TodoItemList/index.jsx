@@ -8,13 +8,12 @@ class TodoItemList extends React.Component {
         return (
             <div>
                 {
-                    this.props.itemList.map((item,index) => <TodoItem  item={item}  index={index}  key={index}/>)
+                    this.props.itemList.map((item, index) => <TodoItem item={item} index={index} key={index} />)
                 }
             </div>
         )
     }
 }
-
 
 
 const mapStateToProps = state => {
