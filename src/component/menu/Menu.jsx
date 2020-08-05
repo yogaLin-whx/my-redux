@@ -13,15 +13,15 @@ class Menu extends React.Component {
                 <div>
                     <ul>
                         <li>
-                            <Link to="/item">to do item</Link>
+                            <Link to="/">to do item</Link>
                         </li>
                         <li>
                             <Link to="/done">done item</Link>
                         </li>
                     </ul>
-                    <Route path="/done" component={DoneItem}>
+                    <Route  path="/done" component={DoneItem}>
                     </Route>
-                    <Route path="/item" component={AddItem}>
+                    <Route exact path="/" component={AddItem}>
                     </Route>
                 </div>
             </Router>

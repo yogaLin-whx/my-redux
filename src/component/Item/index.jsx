@@ -1,8 +1,8 @@
 import React from 'react';
 import { connect } from "react-redux";
 import todoApi from '../../Request';
-
-
+import { Button, Row, Col } from 'antd';
+import { DeleteOutlined } from '@ant-design/icons';
 class TodoItem extends React.Component {
 
     handleDelete = () => {
@@ -22,9 +22,18 @@ class TodoItem extends React.Component {
     render() {
         return (
             <div>
-                <span onClick={this.handleDone} style={{ textDecorationLine: this.props.item.status ? 'line-through' : 'none' }}>
-                    {this.props.item.content}</span>
-                <button onClick={this.handleDelete}>delete</button>
+                <Row>
+                    <Col span={14} >
+                        <span onClick={this.handleDone} style={{ textDecorationLine: this.props.item.status ? 'line-through' : 'none' }}>
+                        {this.props.item.content}</span>
+                    </Col>
+                    <Col span={6}>
+                    </Col>
+                    <Col span={4}>
+                        <Button type="primary" danger shape="circle" icon={<DeleteOutlined />} onClick={this.handleDelete}></Button>
+                    </Col>
+                </Row>
+               <br></br>
             </div>
         )
     }

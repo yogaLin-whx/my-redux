@@ -2,8 +2,8 @@ import React from 'react';
 import { connect } from "react-redux";
 import TodoItemList from '../TodoItemList';
 import todoApi from '../../Request'
-
-
+import { Button, Input } from 'antd';
+import { PlusCircleOutlined } from '@ant-design/icons';
 class AddItem extends React.Component {
 
     handleAdd = () => {
@@ -23,7 +23,8 @@ class AddItem extends React.Component {
 
         return (<div>
             <div>
-                <input id='input' /> <button onClick={this.handleAdd}>Add</button>
+                <Input id='input' size="large"
+                    addonAfter={<Button type="primary" shape="circle" icon={<PlusCircleOutlined />} onClick={this.handleAdd} />} />
             </div>
             <TodoItemList></TodoItemList>
         </div>
