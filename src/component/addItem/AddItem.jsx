@@ -35,6 +35,8 @@ class AddItem extends React.Component {
     componentDidMount() {
         todoApi.get()
             .then((response) => {
+                console.log("aa");
+                console.log(response);
                 this.props.addItemList(response.data);
             })
     }

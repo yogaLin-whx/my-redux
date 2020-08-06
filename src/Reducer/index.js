@@ -1,12 +1,12 @@
 const initialize = {
     itemList: [],
-    loading: false
+    loading: false,
 }
-
+var autoId = 1;
 function reducer(state = initialize, action) {
     switch (action.type) {
         case 'add':
-            return { itemList: [...state.itemList, {id:state.itemList.length+1, content: action.content, status: false }] }
+            return { itemList: [...state.itemList, {id:autoId++, content: action.content, status: false }] }
         case 'delete':
             return { itemList: state.itemList.filter((item, index) => index !== action.index) }
         case 'done':
