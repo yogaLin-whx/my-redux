@@ -13,7 +13,7 @@ function reducer(state = initialize, action) {
             return {
                 itemList: state.itemList.map((item, index) => {
                     if (index === action.index) {
-                        item.status = !item.status;
+                        return {...item,status: !item.status}
                     }
                     return item;
                 })

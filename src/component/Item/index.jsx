@@ -8,16 +8,24 @@ class TodoItem extends React.Component {
 
     handleDelete = () => {
         let index = this.props.index;
-        todoApi.delete(`/${this.props.item.id}`);
-        this.props.deleteItem(index);
+        console.log("delete id:   "+this.props.item.id);
+        if(this.props.item.id){
+            todoApi.delete(`/${this.props.item.id}`)
+                .then(() => {
+                    this.props.deleteItem(index);
+                });
+        }
     }
-
     handleDone = () => {
         let index = this.props.index;
+        console.log("update id:   "+this.props.item.id);
+        if(this.props.item.id){
         todoApi.put(`/${this.props.item.id}`, {
             status: !this.props.item.status
+        }).then(() => {
+            this.props.doneItem(index);
         })
-        this.props.doneItem(index);
+        }
     }
 
     render() {

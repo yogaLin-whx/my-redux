@@ -4,14 +4,14 @@ import TodoItemList from '../TodoItemList';
 import todoApi from '../../Request'
 import { Input } from 'antd';
 class AddItem extends React.Component {
-
     handleAdd = (value) => {
         if (value !== '') {
             todoApi.post('', {
                 content: value,
                 status: false
+            }).then(() => {
+                this.props.addItem(value);
             })
-            this.props.addItem(value);
         } else {
             alert("input message should not be blank!");
         }
@@ -40,7 +40,7 @@ class AddItem extends React.Component {
 
 
 const mapStateToProps = state => {
-    return { value: state.reducer.value, itemValue: state.reducer.itemValue };
+    return { value: state.reducer.value, itemValue: state.reducer.itemValue, itemList: state.reducer.itemList};
 }
 
 const mapDispatchToProps = dispatch => ({
