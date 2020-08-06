@@ -2,40 +2,38 @@ import React from 'react';
 import { connect } from "react-redux";
 import TodoItemList from '../TodoItemList';
 import todoApi from '../../Request'
-import { Button, Input } from 'antd';
-import { PlusCircleOutlined } from '@ant-design/icons';
+import { Input } from 'antd';
 class AddItem extends React.Component {
 
-    handleAdd = () => {
-        let inputValue = document.getElementById('input').value;
-        if (inputValue !== '') {
+    handleAdd = (value) => {
+        if (value !== '') {
             todoApi.post('', {
-                content: inputValue,
+                content: value,
                 status: false
             })
-            this.props.addItem(inputValue);
+            this.props.addItem(value);
         } else {
             alert("input message should not be blank!");
         }
     }
 
     render() {
-
         return (<div>
             <div>
-                <Input id='input' size="large"
-                    addonAfter={<Button type="primary" shape="circle" icon={<PlusCircleOutlined />} onClick={this.handleAdd} />} />
+                <Input.Search size="large" enterButton="add" onSearch={value => this.handleAdd(value)} />
             </div>
+            <br></br>
             <TodoItemList></TodoItemList>
         </div>
         )
     }
+    //TODO:  async  await instead of .then
+    //TODO: 不用_this，用箭头函数代替
     componentDidMount() {
-        const _this = this;
         todoApi.get()
-            .then(function (response) {
+            .then((response) => {
                 console.log(response);
-                _this.props.addItemList(response.data);
+                this.props.addItemList(response.data);
             })
     }
 }

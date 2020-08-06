@@ -1,19 +1,20 @@
 import React from 'react';
 import TodoItem from '../Item'
 import { connect } from "react-redux";
-
+import { List } from 'antd';
 
 class DoneItem extends React.Component {
 
     render() {
 
         return (
-
-            <div>
-                {
-                    this.props.itemList.map((item, index) => <TodoItem key={index} item={item} index={index} />)
-                }
-            </div>
+            <List
+                itemLayout="horizontal"
+                dataSource={this.props.itemList}
+                renderItem={(item, index) => (
+                    <TodoItem item={item} index={index} key={index} />
+                )}
+            />
         )
     }
 }

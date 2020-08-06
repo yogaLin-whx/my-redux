@@ -1,26 +1,23 @@
 
 import './App.css';
 import { HashRouter } from 'react-router-dom';
-import Menu from './component/menu/Menu';
+import ItemMenu from './component/menu/ItemMenu';
 import 'antd/dist/antd.css';
 import React from 'react';
 import { Row, Col,Spin } from 'antd';
 import { connect } from "react-redux";
+
 class App extends React.Component{
   render() {
     return (
       <Spin  spinning={this.props.loading}>
-      <div className="App">
-        <header className="App-header">
           <Row>
-            <Col>
+            <Col span={12} offset={6}>
               <HashRouter>
-                <Menu></Menu>
+                <ItemMenu ></ItemMenu>
               </HashRouter>
             </Col>
           </Row>
-        </header>
-      </div>
       </Spin>
     );
   }
