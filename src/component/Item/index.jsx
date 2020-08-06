@@ -18,7 +18,7 @@ class TodoItem extends React.Component {
     }
     handleDone = () => {
         let index = this.props.index;
-        console.log("update id:   "+this.props.item.id);
+        console.log(this.props.item);
         if(this.props.item.id){
         todoApi.put(`/${this.props.item.id}`, {
             status: !this.props.item.status

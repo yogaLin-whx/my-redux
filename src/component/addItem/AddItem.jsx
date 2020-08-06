@@ -10,7 +10,10 @@ class AddItem extends React.Component {
                 content: value,
                 status: false
             }).then(() => {
+                
                 this.props.addItem(value);
+                console.log("-------------")
+                console.log(this.props.itemList)
             })
         } else {
             alert("input message should not be blank!");
