@@ -21,8 +21,4 @@ const mapStateToProps = state => {
     return { itemList: state.reducer.itemList};
 }
 
-const mapDispatchToProps = dispatch => ({
-    deleteItem: () => dispatch({ type: "delete" })
-})
-
-export default connect(mapStateToProps, mapDispatchToProps)(TodoItemList);
+export default connect(mapStateToProps)(TodoItemList);

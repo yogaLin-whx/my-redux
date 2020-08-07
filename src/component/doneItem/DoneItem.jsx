@@ -23,7 +23,5 @@ const mapStateToProps = state => {
     return { itemList: state.reducer.itemList.filter(item => item.status === true) };
 }
 
-
-
 export default connect(mapStateToProps)(DoneItem);
 

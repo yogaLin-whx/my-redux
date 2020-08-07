@@ -27,8 +27,6 @@ class AddItem extends React.Component {
         </div>
         )
     }
-    //TODO:  async  await instead of .then
-    //TODO: 不用_this，用箭头函数代替
     componentDidMount() {
         todoApi.get()
             .then((response) => {
@@ -40,13 +38,9 @@ class AddItem extends React.Component {
 
 
 
-const mapStateToProps = state => {
-    return { value: state.reducer.value, itemValue: state.reducer.itemValue, itemList: state.reducer.itemList};
-}
-
 const mapDispatchToProps = dispatch => ({
     addItem: (id,inputValue) => dispatch({ type: "add",id:id, content: inputValue }),
     addItemList: (data) => dispatch({ type: 'data', data: data })
 })
 
-export default connect(mapStateToProps, mapDispatchToProps)(AddItem);
+export default connect(null, mapDispatchToProps)(AddItem);
