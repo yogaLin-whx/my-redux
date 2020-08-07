@@ -9,11 +9,8 @@ class AddItem extends React.Component {
             todoApi.post('', {
                 content: value,
                 status: false
-            }).then(() => {
-                
-                this.props.addItem(value);
-                console.log("-------------")
-                console.log(this.props.itemList)
+            }).then((response) => {
+                this.props.addItem(response.data.id,value);
             })
         } else {
             alert("input message should not be blank!");
@@ -35,7 +32,6 @@ class AddItem extends React.Component {
     componentDidMount() {
         todoApi.get()
             .then((response) => {
-                console.log("aa");
                 console.log(response);
                 this.props.addItemList(response.data);
             })
@@ -49,7 +45,7 @@ const mapStateToProps = state => {
 }
 
 const mapDispatchToProps = dispatch => ({
-    addItem: (inputValue) => dispatch({ type: "add", content: inputValue }),
+    addItem: (id,inputValue) => dispatch({ type: "add",id:id, content: inputValue }),
     addItemList: (data) => dispatch({ type: 'data', data: data })
 })
 
